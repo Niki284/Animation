@@ -1,0 +1,19 @@
+.contact {
+    background: var(--orange);
+    height: 30rem;
+    .contact--click {
+        
+        .contact__title{
+            color: var(--darkGreen);
+        }
+       
+    } 
+    .contact--click p {
+            background-color: var(--blue);
+            color: var(--white);
+        }
+    
+
+    
+}
+

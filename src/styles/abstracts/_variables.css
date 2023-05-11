@@ -1,0 +1,17 @@
+:root {
+    --font-display: 'Tahoma', sans-serif;
+    --font-normal: 'Verdana', sans-serif;
+
+   --lightwhite: #f8f6f1;
+   --black: #1b1b1b;
+    --blue:#082b9d;
+    --darkGreen:#0d4135;
+    --lightGreen:#8acdb8;
+    --brune:#a2543d;
+    --orange:#f4b63e;
+    --rose:#f7d1ba;
+    --white: #ffffff;
+
+    --minigap: .5rem;
+    --gap: 1rem;
+}

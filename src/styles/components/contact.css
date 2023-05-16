@@ -1,19 +1,38 @@
 .contact {
     background: var(--orange);
     height: 30rem;
+
+    .contact__block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--gap);
+    }
+
     .contact--click {
-        
-        .contact__title{
+        padding: var(--minigap);
+        text-decoration: none;
+        color: var(--darkGreen);
+
+        .contact__title {
             color: var(--darkGreen);
+            padding: var(--minigap);
         }
-       
-    } 
+    }
+
     .contact--click p {
-            background-color: var(--blue);
-            color: var(--white);
-        }
-    
+        background-color: var(--blue);
+        color: var(--white);
+        padding: 6rem;
+        margin: 4rem 2rem;
+        border-radius: 50%;
+        text-align: center;
+        transition: 0.5s all;
+    }
 
-    
+    .contact--click:hover p {
+        padding: 4rem;
+        margin: 4rem;
+        transform: rotateZ(10deg);
+    }
 }
-

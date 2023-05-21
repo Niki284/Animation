@@ -13,3 +13,12 @@
         }
     }
 }
+.flex__block--grean {
+    background-color: var(--darkGreen);
+    color: var(--lightGreen);
+}
+
+.flex__block--white {
+    background-color: var(--lightwhite);
+    color: var(--blue);
+}

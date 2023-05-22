@@ -5,6 +5,7 @@
     .flex__block--all {
         max-width: 21rem;
         padding: var(--gap);
+        
     }
     .flex__blo-r {
         padding: var(--gap);

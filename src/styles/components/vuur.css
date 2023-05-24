@@ -1,7 +1,8 @@
 .flex__block {
     background: var(--blue);
     color: var(--white);
-
+    display: flex;
+    justify-content: space-between;
     .flex__block--all {
         max-width: 21rem;
         padding: var(--gap);

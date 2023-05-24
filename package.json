@@ -17,6 +17,7 @@
     "postcss-nesting": "^11.2.2"
   },
   "dependencies": {
+    "@lottiefiles/lottie-interactivity": "^1.6.2",
     "gsap": "^3.11.5"
   }
 }

@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const scroll = (()=> {
-    const listItems = gsap.utils.toArray(".flex__block--all h1");
+    const listItems = gsap.utils.toArray(".flex__block--all");
 
     listItems.forEach((item, index) => {
   gsap.set(item, { opacity: 0 });

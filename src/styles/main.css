@@ -1,6 +1,10 @@
 @import url('./abstracts/_variables.css');
+@import url('./reset.css');
+@import url('./components/_menu.css');
 @import url('./base/_typography.css');
 @import url('./components/contact.css');
 @import url('./components/vuur.css');
 @import url('./components/cursor.css');
+@import url('./components/loading.css');
+
 

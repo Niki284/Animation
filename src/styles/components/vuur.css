@@ -1,17 +1,38 @@
+.content--flex {
+    display: flex;
+    justify-content: space-between;
+    
+    & .title__rotate {
+        position: relative;
+       & h3 {
+            font-size: 10rem;
+            transform: rotate(270deg);
+            position: fixed;
+        }
+    }
+}
+
 .flex__block {
     background: var(--blue);
     color: var(--white);
     display: flex;
     justify-content: space-between;
     .flex__block--all {
-        max-width: 21rem;
+       
         padding: var(--gap);
+        & .flex__block--title {
+           font-size: 6.5rem; 
+           line-height: 7rem;
+        }
+        
         
     }
     .flex__blo-r {
         padding: var(--gap);
+         width: 21rem;
         :is(h3) {
             line-height: 1.8rem;
+            padding: var(--minigap) 0;
         }
     }
 }

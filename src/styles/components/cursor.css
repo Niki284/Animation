@@ -10,4 +10,5 @@
     pointer-events: none;
     background-color: var(--blue);
     mix-blend-mode: difference;
+    z-index: 1;
   }

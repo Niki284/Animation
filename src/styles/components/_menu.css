@@ -1,0 +1,16 @@
+.menu {
+    margin: var(--minigap);    
+    & a {
+       text-decoration: none; 
+       color: var(--blue);
+       & p {
+        font-size: 1rem;
+        display: flex;
+        justify-content: flex-end;
+       }
+       & strong {
+        font-size: 4rem;
+        padding: 0 var(--minigap);
+       }
+    }
+}

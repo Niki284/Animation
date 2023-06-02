@@ -1,0 +1,8 @@
+.flex__blo__list {
+    font-size: 2rem;
+    & li::marker {
+        content: "\2606";
+        padding: var(--minigap);
+       
+    }
+}

@@ -3,11 +3,11 @@
     justify-content: space-between;
     
     & .title__rotate {
-        position: relative;
+       
        & h3 {
             font-size: 10rem;
             transform: rotate(270deg);
-            position: fixed;
+            
         }
     }
 }
@@ -44,4 +44,24 @@
 .flex__block--white {
     background-color: var(--lightwhite);
     color: var(--blue);
+}
+.fotos {
+    background-color: var(--brune);
+    color: var(--rose);
+    flex-direction: column;
+    & .foto {
+        padding: var(--gap);
+    }
+    & h1 {
+        font-size: 6rem; 
+        padding: var(--gap);
+            
+        }
+    & .foto--L {
+        height: 6rem;
+        opacity: 0;
+        
+       
+    } 
+    
 }

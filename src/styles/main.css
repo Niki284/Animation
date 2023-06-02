@@ -6,5 +6,7 @@
 @import url('./components/vuur.css');
 @import url('./components/cursor.css');
 @import url('./components/loading.css');
+@import url('./components/_horizonscroll.css');
+@import url('./components/_list.css');
 
 

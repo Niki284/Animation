@@ -3,11 +3,32 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: var(--font-display);
+    font-family: "Akzide";
+
 }
 
+span , strong{
+    font-family: "Canela-ligt";
+}
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+@font-face {
+    font-family:"Akzide" ;
+    src: url('../../../static/fonts/subset-AkzidenzGroteskBQ-Reg.29047bd5.woff2');
+}
+@font-face {
+    font-family: "Canela-ligt";
+    src: url('../../../static/fonts/subset-Canela-Light.8ce6ec1c.woff2');
+}
+@font-face {
+    font-family: "Canela-ita";
+    src: url('../../../static/fonts/subset-Canela-LightItalic.ee25cf68.woff2');
+}
+@font-face {
+    font-family: "Canela-Reg";
+    src: url('../../../static/fonts/subset-Canela-Regular.woff2');
 }

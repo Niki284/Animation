@@ -1,8 +1,14 @@
 import { gsap } from "gsap";
-import {scroll} from "./scroll/scroll"
+import './scroll/scroll2';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {cursor} from "./cursor/cursorB";
-import "./loading/loading";
+import pinElements from "./scroll/pin";
+import showWelcome from "./loading/loading";
 gsap.registerPlugin(ScrollTrigger);
 
-scroll();
+//scroll();
+const afterWelcome = () => {
+    pinElements();
+}
+
+showWelcome(afterWelcome);

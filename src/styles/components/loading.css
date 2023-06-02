@@ -1,0 +1,14 @@
+.loading {
+    height: 100vh;
+    min-height: 100svh;
+    color: var(--white);
+    text-align: center;
+    background: var(--blue);
+    display: flex;
+    top: 0;
+    align-items: center;
+    left: 50%;
+    justify-content: center;
+    
+    
+}

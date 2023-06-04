@@ -17,7 +17,6 @@ const showWelcome = (callback) => {
     opacity: 0,
     duration: 1.5,
     ease: ".5 ease-in",
-    //position: absolute
 });
 }
 

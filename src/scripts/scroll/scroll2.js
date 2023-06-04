@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
+
 const $grid = document.querySelector("[data-animation='column']");
 const $gridItems = $grid.querySelectorAll('h1');
 

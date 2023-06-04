@@ -11,10 +11,10 @@ const pinElements = () => {
         const $overflowElement = $trigger.querySelector("[data-child='pin']");
         const $innerElements = $overflowElement.querySelectorAll("[data-child='inner-pin']");
         //const $animateChild = $trigger.querySelector("[data-child='animate-child']");
-       
+       /*
         $innerElements.forEach(($trigger, index) => {
             gsap.set($trigger, { opacity: 0 });
-        })
+        })*/
 
         const scrollTween = gsap.to($overflowElement, {
             x: (window.innerWidth - $overflowElement.scrollWidth) - 150,

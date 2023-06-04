@@ -56,12 +56,26 @@
         font-size: 6rem; 
         padding: var(--gap);
             
-        }
-    & .foto--L {
-        height: 6rem;
-        opacity: 0;
-        
-       
-    } 
-    
+    }
+}   
+
+.foto{
+    position: relative;
 }
+
+.foto--L  {
+    position:  absolute;
+    top: 0;
+    left: 0;
+
+    height: 12rem;
+    width: 8rem;
+    
+    opacity: 0;
+    transform: translate(-50%,-50%);
+} 
+.foto--L img {
+    height: 100%;
+    width: 100%;
+}
+ 

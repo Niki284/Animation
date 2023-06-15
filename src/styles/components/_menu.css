@@ -1,6 +1,8 @@
 .menu {
-    margin: var(--minigap);    
+     
+    background-color: var(--lightwhite);  
     & a {
+    padding: var(--minigap); 
        text-decoration: none; 
        color: var(--blue);
        & p {

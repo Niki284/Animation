@@ -1,0 +1,17 @@
+.box {
+    --dimensions: 20rem;
+
+    width: var(--dimensions);
+    height: var(--dimensions);
+    margin: 3rem;
+    background-color: gray;
+    color: aliceblue;
+    border-radius: var(--gap);
+    & blockquote {
+        font-size: 1.3rem;
+        padding: var(--minigap);
+    }
+    & h3 {
+        padding: var(--minigap);
+    }
+}

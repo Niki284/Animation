@@ -1,30 +1,34 @@
 .contact {
     background: var(--orange);
-    /*height: 30rem;*/
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    z-index: -5;
+    height: 40rem;
 
     & .contact__block {
         display: flex;
         justify-content: center;
         align-items: center;
-        /*
-               
-
-
-        */
         padding: var(--gap);
+        position: fixed;
+        top: 50%;
+        z-index: -3;
+        left: 40%;
     }
 
     .contact--click {
         padding: var(--minigap);
         text-decoration: none;
         color: var(--darkGreen);
-
+        z-index: 1;
         .contact__title {
             color: var(--darkGreen);
             padding: var(--minigap);
+            font-family: "Canela-ligt";
+            font-size: 2rem;
         }
     }
 

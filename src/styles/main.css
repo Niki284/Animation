@@ -1,12 +1,22 @@
 @import url('./abstracts/_variables.css');
-@import url('./reset.css');
-@import url('./components/_menu.css');
 @import url('./base/_typography.css');
-@import url('./components/contact.css');
-@import url('./components/vuur.css');
-@import url('./components/cursor.css');
+@import url('./reset.css');
 @import url('./components/loading.css');
-@import url('./components/_horizonscroll.css');
+@import url('./layouts/_section.css');
+@import url('./layouts/_row.css');
+@import url('./layouts/_speciaalFlex.css');
+@import url('./components/_menu.css');
+@import url('./components/_box.css');
+@import url('./components/_circle.css');
+@import url('./components/_cursor.css');
 @import url('./components/_list.css');
 
+@import url('./layouts/container.css');
+@import url('./components/contact.css');
+@import url('./components/vuur.css');
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}

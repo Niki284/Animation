@@ -3,13 +3,9 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: "Akzide";
-
-}
-
-span , strong{
     font-family: "Canela-ligt";
 }
+
 ul {
     list-style: none;
     margin: 0;

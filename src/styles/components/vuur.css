@@ -2,38 +2,63 @@
     display: flex;
     justify-content: space-between;
     
-    & .title__rotate {
+    & .title__rotate{
        
-       & h3 {
             font-size: 10rem;
-            transform: rotate(270deg);
+            writing-mode: vertical-lr;
+            max-height: fit-content;
             
+       & .title__rotate h3 {
+            height: 20rem;
         }
     }
 }
-
+.title__rotate lottie-player {
+    transform: translate(0px);
+}
 .flex__block {
     background: var(--blue);
     color: var(--white);
     display: flex;
     justify-content: space-between;
     .flex__block--all {
-       
+      
         padding: var(--gap);
         & .flex__block--title {
-           font-size: 6.5rem; 
+           font-size: 5rem; 
            line-height: 7rem;
+           display: flex;
+           flex-direction: column; 
+           
+           
+           & span:nth-child(even) {
+            text-align: right;           }
+           
+
         }
         
-        
+      & h2 {
+        padding: var(--gap) 0;
+      }  
     }
     .flex__blo-r {
         padding: var(--gap);
          width: 21rem;
+         :is(strong) {
+            font-size: .75rem;
+            font-family: "Canela-ligt";
+         }
         :is(h3) {
             line-height: 1.8rem;
             padding: var(--minigap) 0;
+            font-family: "Canela-Reg";
+            font-size: 1rem;
         }
+    }
+    .flex__blo-r.flex__blo-rigth {
+        left: 30%;
+        position: relative;
+        width: 24rem;
     }
 }
 .flex__block--grean {
@@ -55,12 +80,22 @@
     & h1 {
         font-size: 6rem; 
         padding: var(--gap);
+        margin: var(--gap);
+        border-bottom: 1px solid var(--white);
             
     }
 }   
 
 .foto{
     position: relative;
+    z-index: 1;
+    & .flex__block--title {
+        display: flex;
+        flex-direction: column; 
+                
+    } & span:nth-child(even) {
+            text-align: right; 
+    } 
 }
 
 .foto--L  {
@@ -80,3 +115,6 @@
     width: 100%;
 }
  
+.vuur {
+padding: 2rem 0;
+}

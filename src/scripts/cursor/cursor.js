@@ -1,27 +1,37 @@
-import { gsap } from "gsap";
+import {
+  gsap
+} from "gsap";
+export const cursorBol = () => {
+  let cursor = document.querySelector('.cursor');
+  let cursorScale = document.querySelectorAll('.cursor-scale');
+  let mouseX = 0;
+  let mouseY = 0;
 
-gsap.set(".ball", {xPercent: -50, yPercent: -50});
+  gsap.to({}, 0.020, {
+    repeat: -1,
+    onRepeat: function () {
+      gsap.set(cursor, {
+        css: {
+          left: mouseX,
+          top: mouseY,
+        }
+      })
+    }
+  });
 
-const ball = document.querySelector(".ball");
-const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-const mouse = { x: pos.x, y: pos.y };
-const speed = 0.2;
-
-const xSet = gsap.quickSetter(ball, "x", "px");
-const ySet = gsap.quickSetter(ball, "y", "px");
-
-window.addEventListener("mousemove", e => {    
-  mouse.x = e.x;
-  mouse.y = e.y;  
-});
-
-gsap.ticker.add(() => {
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  })
   
-  // adjust speed for higher refresh monitors
-  const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
-  
-  pos.x += (mouse.x - pos.x) * dt;
-  pos.y += (mouse.y - pos.y) * dt;
-  xSet(pos.x);
-  ySet(pos.y);
-});
+  cursorScale.forEach(link => {
+  link.addEventListener('mousemove', () => {
+    cursor.classList.add('grow');
+  });
+
+  link.addEventListener('mouseleave', () => {
+    cursor.classList.remove('grow');
+  });
+})
+}
+

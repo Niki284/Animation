@@ -1,20 +1,20 @@
 {
-  "name": "parcel",
+  "name": "project-2023-gsap-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "source": "./index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "start": "parcel"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nikita",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.8.3",
     "parcel-reporter-static-files-copy": "^1.5.0",
     "postcss": "^8.4.23",
+    "postcss-modules": "^4.3.1",
     "postcss-nesting": "^11.2.2"
   },
   "dependencies": {

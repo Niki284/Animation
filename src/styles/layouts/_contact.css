@@ -1,0 +1,85 @@
+.contact {
+    background-color: var(--orange);
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: -2;
+
+    .contact__background {
+        max-width: 90rem;
+        background-color: rgb(250 188 68);
+        margin: 0px auto;
+        opacity: 0.5;
+        border-radius: 0 0 1rem 1rem;
+        z-index: -1;
+    }
+
+    & .contact__block {
+        padding: var(--gap);
+        z-index: 0;
+        flex-direction: column;
+        display: flex;
+        position: fixed;
+        top: 30%;
+        left: 8%;
+        align-items: center;
+
+
+    }
+
+    @media screen and (min-width: 30rem) {
+        .contact__block {
+            left: 16%;
+        }
+    }
+
+    @media screen and (min-width: 40rem) {
+        .contact__block {
+            left: 30%;
+        }
+    }
+
+    .contact__title {
+        color: var(--darkGreen);
+        padding: var(--minigap);
+        font-family: "Canela-ligt";
+        font-size: 2rem;
+        z-index: 1;
+        background-color: transparent;
+    }
+
+    @media screen and (min-width: 40rem) {
+        .contact__title {
+            font-size: 3rem;
+        }
+    }
+
+    @media screen and (min-width: 54rem) {
+        .contact__title {
+            font-size: 4.2rem;
+        }
+    }
+
+    .contact--click {
+        padding: var(--minigap);
+        color: var(--darkGreen);
+        z-index: 1;
+        text-decoration: none;
+        background-color: var(--blue);
+        color: var(--white);
+        border-radius: 50%;
+        padding: 5rem 4rem;
+        font-size: 2rem;
+        margin: 8rem 0rem;
+        transition: 0.25s ease-in;
+        /* height: 6rem; */
+        /* width: 6rem;*/
+    }
+
+    .contact--click:hover {
+        transform: rotate(10deg);
+        padding: 3.2rem 2.2rem;
+    }
+}

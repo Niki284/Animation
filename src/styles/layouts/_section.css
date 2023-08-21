@@ -1,4 +1,3 @@
-section,
 .section {
     position: relative;
     align-items: center;
@@ -30,5 +29,8 @@ section,
             left: 50%;
             justify-content: center;
             position: fixed;
-            
+            & h3 {
+                font-size: 3rem;
+                
+            }
         }

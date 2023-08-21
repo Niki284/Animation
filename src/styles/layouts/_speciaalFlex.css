@@ -1,8 +1,0 @@
-.content__flex_div {
-    display: flex;
-    justify-content: space-between;
-    margin: 6rem 0;
-}
-.flex__block--extrem {
-    max-width: 80rem;
-}

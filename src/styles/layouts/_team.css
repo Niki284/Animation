@@ -1,0 +1,49 @@
+.team__conatiner {
+    background-color: var(--brune);
+
+    & .team{
+        min-height: 160vh;
+        min-height: 100svh;
+        & .team__foto {
+            color: var(--rose);
+            padding: 1rem 0.5rem;
+            & i {
+                padding: 1rem;
+                font-size: 1.2rem;
+            }
+            & .team--title {
+                display: flex;
+                flex-direction: column;
+                font-size: 2.5rem;
+                padding:  0 1rem;
+                & span:nth-child(even) {
+                    text-align: right;
+                    margin: 1rem;
+                }
+                
+            }
+            @media screen and (min-width: 40rem) {
+                .team--title {
+                    font-size: 4.25rem;
+                }
+            }
+            @media screen and (min-width: 54rem) {
+                .team--title {
+                    font-size: 6rem;
+                }
+            }
+            & .team__foto__img {
+                display: none;
+                height: 6.5rem;
+                width: 6.5rem;
+               
+            }
+        }
+    }
+    /*
+    @media screen and (min-width: 54rem) {
+        .team {
+            height: 120vh;
+        }
+    }*/
+}

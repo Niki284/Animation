@@ -1,0 +1,42 @@
+.conatiner {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.flex__block--grean {
+    background-color: var(--darkGreen);
+    padding: 3rem 0;
+    color: var(--lightGreen);
+}
+
+.flex__block--blue {
+    background-color: var(--blue);
+    color: var(--white);
+    
+}
+
+.flex__block--white {
+    background-color: var(--lightwhite);
+    /*min-height: 50svh;*/
+    color: var(--blue);
+    & .content--flex {
+        display:flex;
+        justify-content:space-between;
+      }
+}
+
+.continer__min {
+    max-width: 85rem;
+    margin: 0 auto;
+}
+
+.flex__block--title {
+    font-size: 5rem;
+    line-height: 7rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    & span:nth-child(even) {
+        text-align: right;
+    }
+}

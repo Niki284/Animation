@@ -2,18 +2,17 @@
 @import url('./base/_typography.css');
 @import url('./reset.css');
 @import url('./components/loading.css');
-@import url('./layouts/_section.css');
-@import url('./layouts/_row.css');
-@import url('./layouts/_speciaalFlex.css');
-@import url('./components/_menu.css');
-@import url('./components/_box.css');
-@import url('./components/_circle.css');
-@import url('./components/_cursor.css');
-@import url('./components/_list.css');
 
-@import url('./layouts/container.css');
-@import url('./components/contact.css');
-@import url('./components/vuur.css');
+@import url('./layouts/_contact.css');
+@import url('./layouts/_section.css');
+@import url('./layouts/_team.css');
+@import url('./layouts/_container.css');
+@import url('./layouts/_horizontalScroll.css');
+
+@import url('./components/_menu.css');
+@import url('./components/_cursor.css');
+@import url('./components/_card.css');
+
 
 body {
     margin: 0;

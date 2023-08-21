@@ -1,0 +1,94 @@
+.flex__block {
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & .flex__block--text {
+        max-width: 22rem;
+        margin: 2.5rem 1rem;
+        font-size: 1.25rem;
+
+        & strong {
+            font-size: .85rem;
+        }
+    }
+
+    .flex__blo__list {
+        font-size: .85rem;
+
+        & li {
+            padding: var(--minigap);
+        }
+
+        & li::marker {
+            content: "\2606";
+        }
+    }
+}
+
+
+.title__rotate {
+    writing-mode: vertical-lr;
+    max-height: fit-content;
+
+    & .lol {
+        font-size: 10rem;
+        /*transform: rotate(270deg);*/
+        /*position: fixed;*/    
+
+        & img {
+            height: 4rem;
+            width: 4rem;
+        }
+    }
+}
+.continer__min__flex {
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end; 
+}
+.continer__min__column {
+    flex-direction: column;
+}
+
+.continer__min__block {
+    max-width: 22rem;
+    margin: 2.5rem 1rem;
+    font-size: 1.25rem;
+    
+    & strong {
+        font-size: .85rem;
+        margin:1rem 0;
+    }
+    & p {
+        padding: 1.5rem 0;
+    }
+    .continer__min__block__list {
+        font-size: .85rem;
+    & li {
+        padding: var(--minigap);
+    }
+    & li::marker {
+        content: "\2606";
+        
+       
+    }
+    }
+}
+
+@media screen and (min-width: 40rem) {
+    .continer__min__block {
+        max-width: 33rem;
+        & strong {
+                font-size: 1.5rem;
+            }
+            & p {
+            font-size: 1.5rem;
+            line-height: 2.3rem;
+        }
+    }
+    
+}

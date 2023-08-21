@@ -1,5 +1,9 @@
 .menu {
-     
+    
+    & .menu__max {
+        margin: 0 auto;
+        max-width: 100rem;
+    }
     background-color: var(--lightwhite);  
     & a {
     padding: var(--minigap); 

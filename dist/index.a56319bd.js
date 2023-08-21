@@ -559,33 +559,31 @@ function hmrAccept(bundle, id) {
 },{}],"bAabt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _gsap = require("gsap");
-var _fade = require("./animations/fade");
-var _fadeDefault = parcelHelpers.interopDefault(_fade);
-var _welcome = require("./animations/welcome");
-var _welcomeDefault = parcelHelpers.interopDefault(_welcome);
-var _pin = require("./animations/pin");
-var _pinDefault = parcelHelpers.interopDefault(_pin);
 var _cursor = require("./cursor/cursor");
 var _hover = require("./cursor/hover");
-var _scrolltop = require("./scrollB/scrolltop");
-var _scrolltopDefault = parcelHelpers.interopDefault(_scrolltop);
-var _scroll2 = require("./scrollB/scroll2");
-var _scroll2Default = parcelHelpers.interopDefault(_scroll2);
-var _scrollLogo = require("./scrollB/scrollLogo");
+var _welcome = require("./animaties/welcome");
+var _welcomeDefault = parcelHelpers.interopDefault(_welcome);
+var _scrollVertical = require("./animaties/scrollVertical");
+var _scrollVerticalDefault = parcelHelpers.interopDefault(_scrollVertical);
+var _svganimatie = require("./animaties/svganimatie");
+var _svganimatieDefault = parcelHelpers.interopDefault(_svganimatie);
+var _scrollLogo = require("./animaties/scrollLogo");
 var _scrollLogoDefault = parcelHelpers.interopDefault(_scrollLogo);
-var _stagerTitle = require("./scrollB/stagerTitle");
-var _stagerTitleDefault = parcelHelpers.interopDefault(_stagerTitle);
+var _horizontalScroll = require("./animaties/horizontalScroll");
+var _horizontalScrollDefault = parcelHelpers.interopDefault(_horizontalScroll);
+var _scrollLottie = require("./animaties/scrollLottie");
+var _scrollLottieDefault = parcelHelpers.interopDefault(_scrollLottie);
 const afterWelcome = ()=>{
-    (0, _pinDefault.default)();
-    (0, _scrolltopDefault.default)();
-    (0, _scroll2Default.default)();
+    (0, _cursor.cursorBol)();
+    (0, _scrollVerticalDefault.default)();
+    (0, _horizontalScrollDefault.default)();
+    (0, _svganimatieDefault.default)();
     (0, _scrollLogoDefault.default)();
-    (0, _stagerTitleDefault.default)();
-    (0, _fadeDefault.default)();
+    (0, _scrollLottieDefault.default)();
 };
 (0, _welcomeDefault.default)(afterWelcome);
 
-},{"gsap":"fPSuC","./animations/fade":"eRidF","./animations/welcome":"h4H47","./animations/pin":"gRYeM","./cursor/cursor":"6Xvb4","./cursor/hover":"384Sq","./scrollB/scrolltop":"iCvPx","./scrollB/scroll2":"8O4V5","./scrollB/scrollLogo":"6E3fO","./scrollB/stagerTitle":"7E3Cd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPSuC":[function(require,module,exports) {
+},{"gsap":"fPSuC","./cursor/cursor":"6Xvb4","./cursor/hover":"384Sq","./animaties/welcome":"p9xLB","./animaties/scrollVertical":"1D5EY","./animaties/svganimatie":"bG9Am","./animaties/scrollLogo":"5Wu8u","./animaties/horizontalScroll":"kG3RC","./animaties/scrollLottie":"gHgt7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPSuC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "gsap", ()=>gsapWithCSS);
@@ -4599,25 +4597,184 @@ var CSSPlugin = {
 });
 (0, _gsapCoreJs.gsap).registerPlugin(CSSPlugin);
 
-},{"./gsap-core.js":"05eeC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eRidF":[function(require,module,exports) {
+},{"./gsap-core.js":"05eeC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6Xvb4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "cursorBol", ()=>cursorBol);
+var _gsap = require("gsap");
+const cursorBol = ()=>{
+    let cursor = document.querySelector(".cursor");
+    let cursorScale = document.querySelectorAll(".cursor-scale");
+    let mouseX = 0;
+    let mouseY = 0;
+    (0, _gsap.gsap).to({}, 0.020, {
+        repeat: -1,
+        onRepeat: function() {
+            (0, _gsap.gsap).set(cursor, {
+                css: {
+                    left: mouseX,
+                    top: mouseY
+                }
+            });
+        }
+    });
+    window.addEventListener("mousemove", (e)=>{
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    cursorScale.forEach((link)=>{
+        link.addEventListener("mousemove", ()=>{
+            cursor.classList.add("grow");
+        });
+        link.addEventListener("mouseleave", ()=>{
+            cursor.classList.remove("grow");
+        });
+    });
+};
+
+},{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"384Sq":[function(require,module,exports) {
+// import { gsap } from "gsap";
+const $parent = document.querySelector(".fotos");
+const $fotos = document.querySelectorAll(".foto");
+$fotos.forEach((elem, i)=>{
+    const divImage = elem.querySelector(".foto--L");
+    const img = divImage.querySelector("img");
+    const _width = divImage.clientWidth;
+    const _height = divImage.clientHeight;
+    elem.addEventListener("mouseenter", (e)=>{
+        requestAnimationFrame(()=>{
+            divImage.style.opacity = 1;
+        });
+    });
+    elem.addEventListener("mouseleave", (e)=>{
+        requestAnimationFrame(()=>{
+            divImage.style.opacity = 0;
+        });
+    });
+    elem.addEventListener("mousemove", (e)=>{
+        requestAnimationFrame(()=>{
+            let { top , left  } = elem.getBoundingClientRect();
+            divImage.style.top = `${e.y - top}px`;
+            divImage.style.left = `${e.x - left}px`;
+            let maxHeight = Math.min(e.y - top, top + elem.clientHeight - e.y);
+            let maxWidth = Math.min(e.x - left, left + elem.clientWidth - e.x);
+            let scale = Math.min(1, Math.min(maxHeight / _height, maxWidth / _width));
+            divImage.style.opacity = scale;
+            divImage.style.width = `${_width * scale}px`;
+            divImage.style.height = `${_height * scale}px`;
+        });
+    });
+});
+
+},{}],"p9xLB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _gsap = require("gsap");
+const showWelcome = (callback)=>{
+    const $welcomeContainer = document.getElementById("welcome");
+    const $loading = $welcomeContainer.querySelector("h3");
+    const timeline = (0, _gsap.gsap).timeline({
+        onComplete: ()=>{
+            callback();
+        }
+    });
+    timeline.fromTo($loading, {
+        y: 0,
+        opacity: 0
+    }, {
+        y: -25,
+        duration: 1,
+        opacity: 1,
+        ease: ".5 ease-in"
+    }).to($welcomeContainer, {
+        x: "100%",
+        duration: 2,
+        ease: ".5 ease-in"
+    });
+};
+// oude versie 
+/*
+const showWelcome = (callback) => {
+    const $welcomeContainer = document.getElementById('welcome');
+    const $loading = $welcomeContainer.querySelector('h3');
+    const timeline = gsap.timeline({
+        onComplete: () => {
+            callback();
+        }
+    });
+    const containerAnimation = gsap.to($welcomeContainer, {
+        x: "100%",
+        duration: 3.5,
+        ease: ".5 ease-in",
+    })
+    timeline
+    .to($loading, {
+        y: -25,
+        duration: 1,
+        onComplete: () => {
+            containerAnimation
+        }
+    })
+}
+*/ exports.default = showWelcome;
+
+},{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1D5EY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
 var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const fadeElements = ()=>{
-    const $fadeElements = document.querySelectorAll("[data-animation='fade']");
-    $fadeElements.forEach(($fadeElement)=>{
-        (0, _gsap.gsap).from($fadeElement, {
-            opacity: 0,
+const scrollVertikal = ()=>{
+    //const $scroleSet = document.querySelectorAll("[data-animation='scrolUl']")
+    const $scroleChild = document.querySelectorAll("[data-animation='itemeTitle']");
+    const $scroleChild2 = document.querySelectorAll("[data-animation='itemeTitleLeft']");
+    $scroleChild.forEach(($Idem1Child, index)=>{
+        (0, _gsap.gsap).set($Idem1Child, {
+            opacity: 0
+        });
+        (0, _gsap.gsap).to($Idem1Child, {
+            y: -15,
+            duration: 1.5,
+            opacity: 1,
             scrollTrigger: {
-                trigger: $fadeElement,
-                start: "top 10%"
+                trigger: $Idem1Child,
+                start: "top 10%",
+                end: "bottom 300px",
+                ease: ".5s",
+                toggleActions: "play reverse restart reverse"
+            }
+        });
+    });
+    $scroleChild2.forEach(($Idem1Child2, index)=>{
+        (0, _gsap.gsap).set($Idem1Child2, {
+            opacity: 0,
+            x: -15
+        });
+        (0, _gsap.gsap).to($Idem1Child2, {
+            x: 15,
+            opacity: 1,
+            stagger: 1,
+            scrollTrigger: {
+                trigger: $Idem1Child2,
+                start: "top 10%",
+                end: "bottom 0%",
+                ease: ".5s",
+                toggleActions: "play reverse restart reverse",
+                //markers: true,
+                snap: {
+                    snapTo: "labels",
+                    duration: {
+                        min: 0.5,
+                        max: 3
+                    },
+                    delay: 0.25,
+                    ease: "power1.in" // the ease of the snap animation ("power3" by default)
+                }
             }
         });
     });
 };
-exports.default = fadeElements;
+exports.default = scrollVertikal;
 
 },{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wnFk":[function(require,module,exports) {
 /*!
@@ -6756,269 +6913,195 @@ Observer.getById = function(id) {
 };
 _getGSAP() && gsap.registerPlugin(Observer);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h4H47":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bG9Am":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
-const showWelcome = (callback)=>{
-    const $welcomeContainer = document.getElementById("welcome");
-    const $loading = $welcomeContainer.querySelector("span");
-    const timeline = (0, _gsap.gsap).timeline({
-        onComplete: ()=>{
-            callback();
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const scaleSvgAnimatie = ()=>{
+    //const $scroleSvgcontine = document.querySelector('[data-animation="containerSvg"]');
+    const $scroleSvgScale = document.querySelector("#scroll--svg");
+    const circels = document.querySelectorAll('[data-animation="circel"]');
+    (0, _gsap.gsap).set(circels, {
+        scale: 0.25,
+        opacity: 0
+    });
+    (0, _gsap.gsap).to(circels, {
+        y: -10,
+        opacity: 1,
+        stagger: 0.5,
+        scale: 1,
+        duration: 1,
+        scrollTrigger: {
+            trigger: $scroleSvgScale,
+            start: "top 60%",
+            end: "bottom bottom",
+            toggleActions: "restart"
         }
     });
-    const containerAnimation = (0, _gsap.gsap).to($welcomeContainer, {
-        x: "100%",
-        duration: 1.5,
-        ease: ".5 ease-in"
-    });
-    timeline.to($loading, {
-        y: -25,
-        onComplete: ()=>{
-            containerAnimation;
+/* 
+  let tl = gsap.timeline({
+        // yes, we can add it to an entire timeline! 
+          y:-20,
+          duration:2,
+          opacity:0,
+        scrollTrigger: {
+         
+          trigger: $scroleSvgcontine,
+          pin: true,   // pin the trigger element while active
+          start: "top top", // when the top of the trigger hits the top of the viewport
+          end: "bottom bottom", // end after scrolling 500px beyond the start
+          toggleActions: "play reverse",
+          markers:true,
+          scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+          snap: {
+            snapTo: "labels", // snap to the closest label in the timeline
+            duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+            delay: 0.25, // wait 0.2 seconds from the last scroll event before doing the snapping
+            ease: "power1.in" // the ease of the snap animation ("power3" by default)
+          },
         }
-    });
-};
-exports.default = showWelcome;
+      });
+    // add animations and labels to the timeline
+    tl.addLabel("start")
+    .from($scroleSvgcontine, {y: 10,opacity:1 , duration:1, opacity:1})
+    .from(".flex__block--text", { y: 10,opacity:0, duration:2})
+    .to($scroleSvgScale, {y: 10,x:30, scale: 1.5, duration:3 , opacity:1})
+    .addLabel("end");
+*/ };
+exports.default = scaleSvgAnimatie;
 
-},{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gRYeM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _gsap = require("gsap");
-var _scrollTrigger = require("gsap/ScrollTrigger");
-(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const horizontaleScroll = ()=>{
-    const $cards = document.querySelectorAll("[data-animation='pin']");
-    $cards.forEach(($carde)=>{
-        const $overflowUlElement = $carde.querySelector("[data-child='pin']");
-        const $listElements = $overflowUlElement.querySelectorAll("[data-child='inner-pin']");
-        const scrollTween = (0, _gsap.gsap).to($overflowUlElement, {
-            x: window.innerWidth - $overflowUlElement.scrollWidth - 150,
-            //opacity: 1,
-            stagger: .2,
-            scrollTrigger: {
-                trigger: $carde,
-                start: "top top",
-                pin: $overflowUlElement,
-                scrub: true,
-                pinSpacing: true
-            }
-        });
-    });
-};
-exports.default = horizontaleScroll; /*
-Testen voor background van color vervangen
-export const testColorBackgound = () => {
-    const $cards = document.querySelectorAll("[data-animation='pin-d']");
-    $cards.forEach($carde => {
-        const $overflowUlElement = $carde.querySelector("[data-child='pin-d']");
-        const $listElements = $overflowUlElement.querySelectorAll("[data-child='inner-pin-d']");
-
-        const scrollBetween = gsap.to($overflowUlElement, {
-            x: (window.innerWidth - $overflowUlElement.scrollWidth) -150,
-            scrollTrigger: {
-                trigger: $carde,
-                start: 'top top',
-                pin: $carde,
-                scrub: true
-            }
-        });
-        $listElements.forEach($listElement => {
-            const backColor = $listElements.dataset;
-            ScrollTrigger.create({
-                trigger: $listElement,
-                containerAnimation: scrollBetween,
-                start: "center 0",
-                //onEnter: () => scaleElement($animateChild, scale),
-                //onEnterBack: () => scaleElement($animateChild, scale),
-                onLeave: () => {
-                    gsap.to(backColor, {
-                        scale: 1
-                    });
-                }
-            });
-        })
-    })
-}
-*/ 
-
-},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6Xvb4":[function(require,module,exports) {
-var _gsap = require("gsap");
-(0, _gsap.gsap).set(".ball", {
-    xPercent: -50,
-    yPercent: -50
-});
-const ball = document.querySelector(".ball");
-const pos = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2
-};
-const mouse = {
-    x: pos.x,
-    y: pos.y
-};
-const speed = 0.2;
-const xSet = (0, _gsap.gsap).quickSetter(ball, "x", "px");
-const ySet = (0, _gsap.gsap).quickSetter(ball, "y", "px");
-window.addEventListener("mousemove", (e)=>{
-    mouse.x = e.x;
-    mouse.y = e.y;
-});
-(0, _gsap.gsap).ticker.add(()=>{
-    // adjust speed for higher refresh monitors
-    const dt = 1.0 - Math.pow(1.0 - speed, (0, _gsap.gsap).ticker.deltaRatio());
-    pos.x += (mouse.x - pos.x) * dt;
-    pos.y += (mouse.y - pos.y) * dt;
-    xSet(pos.x);
-    ySet(pos.y);
-});
-
-},{"gsap":"fPSuC"}],"384Sq":[function(require,module,exports) {
-// import { gsap } from "gsap";
-const $parent = document.querySelector(".fotos");
-const $fotos = document.querySelectorAll(".foto");
-$fotos.forEach((elem, i)=>{
-    const divImage = elem.querySelector(".foto--L");
-    const img = divImage.querySelector("img");
-    const _width = divImage.clientWidth;
-    const _height = divImage.clientHeight;
-    elem.addEventListener("mouseenter", (e)=>{
-        requestAnimationFrame(()=>{
-            divImage.style.opacity = 1;
-        });
-    });
-    elem.addEventListener("mouseleave", (e)=>{
-        requestAnimationFrame(()=>{
-            divImage.style.opacity = 0;
-        });
-    });
-    elem.addEventListener("mousemove", (e)=>{
-        requestAnimationFrame(()=>{
-            let { top , left  } = elem.getBoundingClientRect();
-            divImage.style.top = `${e.y - top}px`;
-            divImage.style.left = `${e.x - left}px`;
-            let maxHeight = Math.min(e.y - top, top + elem.clientHeight - e.y);
-            let maxWidth = Math.min(e.x - left, left + elem.clientWidth - e.x);
-            let scale = Math.min(1, Math.min(maxHeight / _height, maxWidth / _width));
-            divImage.style.opacity = scale;
-            divImage.style.width = `${_width * scale}px`;
-            divImage.style.height = `${_height * scale}px`;
-        });
-    });
-});
-
-},{}],"iCvPx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "scrollPin", ()=>scrollPin);
-var _gsap = require("gsap");
-var _scrollTrigger = require("gsap/ScrollTrigger");
-(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const scrollPin = ()=>{
-    const $scroleMar = document.querySelectorAll("[data-animation='column']");
-    const $scroleMarChild = document.querySelectorAll("[data-animation='iteme']");
-    $scroleMarChild.forEach(($Idem1, index)=>{
-        (0, _gsap.gsap).set($Idem1, {
-            opacity: 0
-        });
-        (0, _gsap.gsap).to($Idem1, {
-            y: -25,
-            opacity: 1,
-            scrollTrigger: {
-                trigger: $Idem1,
-                start: "top 10%",
-                end: "bottom top",
-                ease: ".5s",
-                toggleActions: "play reverse"
-            }
-        });
-    });
-};
-exports.default = scrollPin;
-
-},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8O4V5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _gsap = require("gsap");
-var _scrollTrigger = require("gsap/ScrollTrigger");
-(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const scrollPin2n = ()=>{
-    const $scroleMar = document.querySelectorAll("[data-animation='columnX2']");
-    const $scroleMarChild = document.querySelectorAll("[data-animation='iteme2']");
-    $scroleMarChild.forEach(($Idem1, index)=>{
-        (0, _gsap.gsap).set($Idem1, {
-            opacity: 0
-        });
-        (0, _gsap.gsap).to($Idem1, {
-            x: 15,
-            opacity: 1,
-            scrollTrigger: {
-                trigger: $Idem1,
-                start: "10% 10%",
-                end: "bottom top",
-                ease: ".5s",
-                toggleActions: "play reverse"
-            }
-        });
-    });
-};
-exports.default = scrollPin2n;
-
-},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6E3fO":[function(require,module,exports) {
+},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Wu8u":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
 var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
 const scrollPinLogo = ()=>{
-    const $scroleLolg = document.querySelectorAll('[data-animation="pin-logo"]');
+    const $scroleLolg = document.querySelectorAll('[data-animation="container"]');
     $scroleLolg.forEach((el1)=>{
-        const $scroleLolgChild = el1.querySelectorAll('[data-child="pin-logo"]');
+        const $scroleLolgChild = el1.querySelector("#scroll--logo");
         console.log($scroleLolgChild);
-        (0, _gsap.gsap).to($scroleLolgChild, {
+        (0, _gsap.gsap).from($scroleLolgChild, {
             scrollTrigger: {
                 trigger: $scroleLolg,
+                toggleActions: "play pause play ",
                 pin: $scroleLolgChild,
-                start: "top top",
+                start: "top 10%",
                 scrub: true,
-                end: "bottom top",
-                ease: "none"
+                end: "bottom 55%",
+                ease: "none",
+                duration: 2
             }
         });
     });
 };
 exports.default = scrollPinLogo;
 
-},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7E3Cd":[function(require,module,exports) {
+},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kG3RC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
 var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const scrollPinTitle = ()=>{
-    const $scroleMar = document.querySelector("[data-animation='columne']");
-    const $scroleMarChild = $scroleMar.querySelectorAll("[data-animation='itemeTitle']");
-    $scroleMarChild.forEach(($Idem1, index)=>{
-        (0, _gsap.gsap).set($Idem1, {
-            opacity: 0
-        });
-        (0, _gsap.gsap).to($Idem1, {
-            y: 25,
-            opacity: 1,
-            stagger: .2,
-            scrollTrigger: {
-                trigger: $Idem1,
-                start: "bottom bottom",
-                end: "bottom top",
-                ease: ".5s",
-                toggleActions: "play reverse "
+const horizontaleScroll = ()=>{
+    //const paintElement = document.getElementById("moving-elements");
+    const dragParent = document.getElementById("movie-scroll");
+    console.log(dragParent);
+    const dragLine = dragParent.querySelector(".line");
+    const colors = {
+        0: "#f8f6f1",
+        15: "#082b9d",
+        27: "#a2543d",
+        45: "#f7d1ba",
+        60: "#975e1a",
+        80: "#e7b46c",
+        100: "#43503f"
+    };
+    (0, _gsap.gsap).to(dragLine, {
+        x: -window.innerWidth - 100,
+        stagger: 0.5,
+        //duration: 2,
+        scrollTrigger: {
+            trigger: dragParent,
+            start: "top 5%",
+            end: "bottom 100px",
+            pin: dragParent,
+            scrub: true,
+            pinSpacing: true,
+            onUpdate: ({ progress  })=>{
+                const progressValue = parseFloat(progress.toFixed(2)) * 100; // 0 - 100
+                const colorsValue = Object.keys(colors).reduce((prev, curr)=>Math.abs(curr - progressValue) < Math.abs(prev - progressValue) ? curr : prev);
+                dragParent.style.backgroundColor = colors[colorsValue];
             }
-        });
+        }
     });
 };
-exports.default = scrollPinTitle;
+exports.default = horizontaleScroll;
 
-},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4P6y2","bAabt"], "bAabt", "parcelRequire5b12")
+},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gHgt7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _gsap = require("gsap");
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const scrollLottiePin = ()=>{
+    const $scroleLolg = document.querySelectorAll('[data-animation="containerS"]');
+    const $scroleLolgChild = document.querySelector("#scroll--lottie");
+    let tl = (0, _gsap.gsap).timeline({
+        // yes, we can add it to an entire timeline!
+        scrollTrigger: {
+            toggleActions: "play pause ",
+            trigger: $scroleLolg,
+            pin: $scroleLolgChild,
+            start: "top top",
+            end: "bottom 33%",
+            scrub: 1,
+            snap: {
+                snapTo: "labels",
+                duration: {
+                    min: 0.2,
+                    max: 3
+                },
+                delay: 0.25,
+                ease: "power1.in" // the ease of the snap animation ("power3" by default)
+            }
+        }
+    });
+    tl.addLabel("start").from($scroleLolgChild, {
+        duration: 2
+    }).addLabel("end");
+};
+// oudere version
+/*
+const scrollLottiePin = () => {
+    const $scroleLolg = document.querySelectorAll('[data-animation="containerS"]')
+
+    $scroleLolg.forEach(el1 => {
+        const $scroleLolgChild = el1.querySelector('#scroll--lottie');
+
+        console.log($scroleLolgChild);
+        gsap.from($scroleLolgChild, {
+             scrollTrigger: {
+                trigger: $scroleLolg,
+                toggleActions: "play pause play ",
+                pin: $scroleLolgChild,
+                start: "top 10%",
+                scrub :true,
+                end: "bottom 500px",
+                ease: "none",
+                markers:true,
+                snap: {
+                    duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+                    delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+                    ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
+                  }
+        }}); 
+    })  
+}
+*/ exports.default = scrollLottiePin;
+
+},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4P6y2","bAabt"], "bAabt", "parcelRequire6728")
 
 //# sourceMappingURL=index.a56319bd.js.map

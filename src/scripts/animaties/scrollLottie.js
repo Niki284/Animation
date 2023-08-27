@@ -1,5 +1,6 @@
 import {
-  gsap
+  gsap,
+  Circ
 } from "gsap";
 import {
   ScrollTrigger
@@ -12,33 +13,37 @@ const scrollLottiePin = () => {
   const $scroleLolgChild = document.querySelector('#scroll--lottie');
 
   let tl = gsap.timeline({
-    // yes, we can add it to an entire timeline!
-
     scrollTrigger: {
-      toggleActions: "play pause ",
       trigger: $scroleLolg,
-      pin: $scroleLolgChild, // pin the trigger element while active
-      start: "top top", // when the top of the trigger hits the top of the viewport
-      end: "bottom 33%", // end after scrolling 500px beyond the start
-      scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-      snap: {
-        snapTo: "labels", // snap to the closest label in the timeline
-        duration: {
-          min: 0.2,
-          max: 3
-        }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-        delay: 0.25, // wait 0.2 seconds from the last scroll event before doing the snapping
-        ease: "power1.in" // the ease of the snap animation ("power3" by default)
-      },
-      //markers: true,
+      pin: $scroleLolgChild,
+      start: "top top",
+      end: "bottom 72%",
+      scrub: 1,
+      markers: true,
+      onUpdate: self => {
+        // Calculate the scroll distance
+        const scrollDistance = self.progress * (self.end - self.start);
+        // Calculate the "weight" based on the scroll distance
+        const weight = 1 - Math.min(scrollDistance / (self.end - self.start), 1);
+        // Calculate the timeScale based on the weight
+        const timeScale = 1 + weight * 1; // Adjust the multiplier as needed
+        // Update the animation's timeScale
+        self.animation.timeScale(timeScale);
+      }
     }
   });
 
-  tl.addLabel("start")
-    .from($scroleLolgChild, {
-      duration: 2
-    })
-    .addLabel("end");
+  tl.to($scroleLolgChild, {
+    y: '100%',
+    duration: 2,
+    ease: Circ.easeOut
+  });
+
+  // tl.addLabel("start")
+  //   .from($scroleLolgChild, {
+  //     duration: 2
+  //   })
+  //   .addLabel("end");
 }
 
 

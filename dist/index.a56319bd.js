@@ -4630,7 +4630,44 @@ const cursorBol = ()=>{
             cursor.classList.remove("grow");
         });
     });
-};
+} /*
+// Select the cursor element
+const cursor = document.querySelector('.cursor');
+
+// Add event listeners to track mouse movement
+document.addEventListener('mousemove', (e) => {
+  // Update cursor position
+  gsap.to(cursor, {
+    duration: 0.3,
+    x: e.clientX - cursor.offsetWidth / 2,
+    y: e.clientY - cursor.offsetHeight / 2,
+    ease: 'power2.out',
+  });
+  
+  // Ensure the cursor is visible
+  gsap.set(cursor, { opacity: 1 });
+  
+  // Clear any previous animations
+  if (cursor.animation) cursor.animation.kill();
+  
+  // Set up a delayed fade-out animation
+  cursor.animation = gsap.to(cursor, {
+    duration: 0.5,
+    opacity: 0,
+    delay: 1, // Adjust the delay before fading out
+    onComplete: () => {
+      cursor.style.pointerEvents = 'none'; // Disable interactions after fading out
+    },
+  });
+});
+
+// Add event listener to reset cursor visibility when the mouse enters the window
+document.addEventListener('mouseenter', () => {
+  cursor.style.pointerEvents = 'auto'; // Enable interactions
+  gsap.set(cursor, { opacity: 1 });
+  if (cursor.animation) cursor.animation.kill();
+});
+*/ ;
 
 },{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"384Sq":[function(require,module,exports) {
 // import { gsap } from "gsap";
@@ -7046,32 +7083,26 @@ parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
 var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+console.log();
 const scrollLottiePin = ()=>{
     const $scroleLolg = document.querySelectorAll('[data-animation="containerS"]');
     const $scroleLolgChild = document.querySelector("#scroll--lottie");
-    let tl = (0, _gsap.gsap).timeline({
-        // yes, we can add it to an entire timeline!
-        scrollTrigger: {
-            toggleActions: "play pause ",
-            trigger: $scroleLolg,
-            pin: $scroleLolgChild,
-            start: "top top",
-            end: "bottom 33%",
-            scrub: 1,
-            snap: {
-                snapTo: "labels",
-                duration: {
-                    min: 0.2,
-                    max: 3
-                },
-                delay: 0.25,
-                ease: "power1.in" // the ease of the snap animation ("power3" by default)
-            }
-        }
+    // create the smooth scroller FIRST!
+    (0, _gsap.gsap).to($scroleLolg, {
+        //duration:2,
+        //stagger:1, 
+        //scrub:1,
+        smooth: 0.8,
+        speed: 0.5,
+        effects: true
     });
-    tl.addLabel("start").from($scroleLolgChild, {
-        duration: 2
-    }).addLabel("end");
+    (0, _scrollTrigger.ScrollTrigger).create({
+        trigger: $scroleLolg,
+        pin: $scroleLolgChild,
+        start: "top top",
+        end: "bottom 40%",
+        markers: true
+    });
 };
 // oudere version
 /*

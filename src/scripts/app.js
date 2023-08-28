@@ -18,7 +18,6 @@ const afterWelcome = () => {
     scaleSvgAnimatie();
     scrollLogo();
     scrollLottiePin();
-
 }
 
 showWelcome(afterWelcome);

@@ -17,8 +17,8 @@ const scrollVertikal = () => {
             opacity: 1,
              scrollTrigger: {
                 trigger: $Idem1Child,
-                start: "top 10%",
-                end: "bottom 300px",
+                start: "top top",
+                end: "bottom 900px",
                 ease: ".5s",
                 toggleActions: "play reverse restart reverse",
         }}); 

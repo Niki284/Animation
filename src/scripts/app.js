@@ -8,7 +8,8 @@ import scrollVertikal from './animaties/scrollVertical';
 import scaleSvgAnimatie from './animaties/svganimatie';
 import scrollLogo from './animaties/scrollLogo';
 import horizontaleScroll from './animaties/horizontalScroll';
-import scrollLottiePin from './animaties/scrollLottie';
+import testScroll from './animaties/testScroll';
+//import scrollLottiePin from './animaties/scrollLottie';
 
 
 const afterWelcome = () => {
@@ -17,7 +18,8 @@ const afterWelcome = () => {
     horizontaleScroll();
     scaleSvgAnimatie();
     scrollLogo();
-    scrollLottiePin();
+    testScroll();
+   // scrollLottiePin();
 }
 
 showWelcome(afterWelcome);
